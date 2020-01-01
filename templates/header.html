@@ -1,0 +1,87 @@
+<!-- Navbar Start -->
+<nav class="navbar navbar-inverse navbar-fixed-top " role="banner">
+    <div class="container" style="padding-bottom:1px" >
+
+        <div class="navbar-header">
+
+            <!-- Telefon ekranları için menü butonu -->
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- İsim Soyisim veya Marka İsmi -->
+            <a href="{% url 'home' %}" class="navbar-brand">Farid Jafarzada Blog</a>
+        </div>
+
+        <nav class="collapse navbar-collapse" role="navigation">
+
+            <!-- Arama Çubuğu -->
+            <form class="navbar-form navbar-left" role="search" method="GET" action="{% url 'post:index' %}">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="q" placeholder="Blogda axtar"
+                        value="{{request.GET.q}}">
+                    <span class="input-group-btn">
+                        <input class="btn btn-default" type="submit" value="Axtar">
+                    </span>
+                </div>
+            </form>
+
+            <!-- Temel Sayfalar -->
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="{% url 'home' %}">Ana səhifə</a></li>
+                <li><a href="{% url 'post:categorylist' %}">Kateqoriyalar</a></li>
+                <li><a href="{% url 'post:index' %}">Blog</a></li>
+                {% if not request.user.is_authenticated %}
+                <li><a href="{% url 'accounts:login' %}">Giriş</a></li>
+                <li><a href="{% url 'accounts:register' %}">Qeydiyyat</a></li>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                <li><a href="{% url 'post:create' %}">Post Əlavə et</a></li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Profil <span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'profile:profilimage' %}">Profil şəklini dəyiş</a></li>
+                        <li><a href="{% url 'accounts:logout' %}">Çıxış et ({{request.user.get_full_name}})</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li style='padding-top:5px;'>
+                <div class="inset" >
+                  <img src="{{user.userprofil.image.url}}">
+                </div>
+                </li>
+                {% endif %}
+            </ul>
+
+        </nav>
+
+    </div>
+</nav>
+<style>
+.inset {
+  width: 46px;
+  height: 42px;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.6), 
+    0 1px 1px rgba(0,0,0,0.1);
+  background-color: transparent !important;
+  z-index: 999;
+}
+
+.inset img {
+  border-radius: inherit;
+  width: inherit;
+  height: inherit;
+  display: block;
+  position: relative;
+  z-index: 998;
+}
+</style>

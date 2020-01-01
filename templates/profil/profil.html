@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class='container'>
+    {{user.id}}<br>
+    {{user.first_name}}<br>
+    {{user.last_name}}<br>
+    {{user.email}}<br>
+    <p>Qeydiyyat tarixi: {{user.last_login}}</p><br>
+    <img src="{{ user.userprofil.image.url }}" width=240 height=200><br>
+
+</div>
+{% endblock body %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% for user in profiles %}
+        {{user.get_full_name}}<br>
+        {{user.email}}<br>
+        <img src='{{user.userprofil.image.url}}' width = 240 height=200><br>
+        <hr>
+    {% endfor %}
+{% endblock body %} 
