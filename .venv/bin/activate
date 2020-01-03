@@ -76,3 +76,6 @@ pydoc () {
 if [ -n "${BASH-}" ] || [ -n "${ZSH_VERSION-}" ] ; then
     hash -r 2>/dev/null
 fi
+
+DJANGO_SETTINGS_MODULE="blog.settings.development"
+export DJANGO_SETTINGS_MODULE
