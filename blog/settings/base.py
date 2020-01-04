@@ -26,7 +26,7 @@ SECRET_KEY = 'd!#6czwop$dbr@5b21w29qhp^yd*5*_q4hez30ee5nc*k__2t3'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ['jafarzada.com','www.jafarzada.com','64.225.66.87']
+ALLOWED_HOSTS = ['jafarzada.com','www.jafarzada.com','64.225.66.87',"127.0.0.1"]
 
 
 # Application definition
