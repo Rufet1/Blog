@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from profil.models import UserProfil
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(max_length=100, widget=forms.PasswordInput)
+    username = forms.CharField(max_length=100, label='İstifadəçi adı')
+    password = forms.CharField(max_length=100, widget=forms.PasswordInput,label='Parol')
 
     def clean(self):
         username = self.cleaned_data.get('username')
