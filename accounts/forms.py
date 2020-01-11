@@ -54,3 +54,20 @@ class RegisterForm(forms.ModelForm):
             if email in email_list:
                 raise forms.ValidationError('daxil etdiyiniz email movcuddur!') 
             return email
+
+class PasswordForm(forms.Form):
+    password = forms.CharField(max_length=255,widget=forms.PasswordInput,label='İndiki Parolunuz')
+    newpassword1 = forms.CharField(max_length=255,widget=forms.PasswordInput,label='Yeni Parol')
+    newpassword2 = forms.CharField(max_length=255,widget=forms.PasswordInput,label='Yeni parol (təkrar)')
+    
+
+    def clean_newpassword2(self):
+        new_password2 = self.cleaned_data.get('newpassword1')
+        new_password = self.cleaned_data.get('newpassword2') 
+        if new_password2 and new_password and new_password2 != new_password:
+            raise forms.ValidationError('Parollar eyni deyil!')
+        return new_password2      
+
+    # def clean_password(self):
+    #      password = self.cleaned_data.get('password')
+    #      if password and User

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, Http404
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm,PasswordForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from profil.models import UserProfil
 # from .models import UserProfile
 # Create your views here.
@@ -41,4 +42,17 @@ def logout_view(request):
         return Http404
     logout(request)
     return redirect ('home')
+
+def password(request):
+    form = PasswordForm(request.POST or None)
+    if form.is_valid():
+        password = form.cleaned_data.get('password')
+        new_password2 = form.cleaned_data.get('newpassword1')
+        new_password = form.cleaned_data.get('newpassword2')
+        user = User.objects.get(username = request.user.username)
+        if user.check_password(password) and new_password == new_password2:
+            user.set_password(new_password)
+            user.save()
+            return redirect('accounts:login')
+    return render(request,'accounts/password.html',{'form':form})
 

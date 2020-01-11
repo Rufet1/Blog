@@ -9,6 +9,8 @@
     <p>Qeydiyyat tarixi: {{user.last_login}}</p><br>
     <img src="{{ user.userprofil.image.url }}" width=240 height=200><br><hr>
     <a href="{% url 'sendemail:sendemail' %}"><button class="btn btn-danger">parolu dəyişərək emailə göndər</button></a>
+    <a href="{% url 'accounts:password' %}"><button class="btn btn-primary">parolu dəyiş</button></a>
+
 
 </div>
 {% endblock body %}
