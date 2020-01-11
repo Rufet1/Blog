@@ -133,6 +133,9 @@ def category_delete(request,categoryid):
     category.delete()
     return redirect ('post:categorylist')
 
+def about_view(request):
+    return render (request, 'aboutus.html')
+
 # def comment_update(request,commentid):
 #     comment = get_object_or_404(Comment,id=commentid)
 #     form = CommentForm(request.POST or None, request.FILES or None, instance=comment)

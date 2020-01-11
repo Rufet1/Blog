@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'captcha',
     'accounts',
-    'profil'
+    'profil',
+    'sendemail'
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 RECAPTCHA_PUBLIC_KEY = '6LdOLMMUAAAAAFNLv77SllJX5J5gN-jPGxRw7xRk'
 RECAPTCHA_PRIVATE_KEY = '6LdOLMMUAAAAAEcuhEJ2qHim1W6n7bwPIek3v6jX'
 NOCAPTCHA = True
+
+
+EMAIL_HOST = 'smtp.hushmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'rufet.quliyev@hushmail.com'
+EMAIL_HOST_PASSWORD = 'reklamlar'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

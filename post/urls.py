@@ -6,6 +6,7 @@ app_name = "post"
 
 urlpatterns = [
  path('index', post_index, name="index"),
+ path('about', about_view, name="about"),
  path('create', post_create, name="create"),
  path('categories/',category_list, name = 'categorylist'),
  path('category-create/',category_create, name = 'categorycreate'),

@@ -25,6 +25,7 @@ urlpatterns = [
     path('post/', include('post.urls')),
     path('account/', include('accounts.urls')),
     path('profil/', include('profil.urls')),
+    path('email/', include('sendemail.urls')),
     path('contact/', contact, name='contact'),
     path('', home_view, name="home"),
     path('about', about_view,name='about')
