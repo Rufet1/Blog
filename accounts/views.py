@@ -56,3 +56,5 @@ def password(request):
             return redirect('accounts:login')
     return render(request,'accounts/password.html',{'form':form})
 
+
+

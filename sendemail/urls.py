@@ -6,5 +6,6 @@ app_name = "sendemail"
 
 urlpatterns = [
  path('index', email_view, name="sendemail"),
+ path('sent', email_sent, name="sentemail"),
 
 ]

@@ -15,6 +15,7 @@
                 {% if not request.user.is_authenticated %}
                 <br>
                 <p>Hesabınız yoxdur? <a href="{% url 'accounts:register' %}">Qeydiyyat</a></p>
+                <a href="{% url 'accounts:forget' %}">Şifrəni unutdun?</a>
                 {% endif %}
             </div>
         </div>

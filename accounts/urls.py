@@ -1,5 +1,6 @@
 from django.urls import path, re_path
 from .views import * 
+from sendemail.views import *
 from django.conf.urls import url
 
 app_name = "accounts"
@@ -9,4 +10,5 @@ urlpatterns = [
  path('register', register_view, name="register"),
  path('logout', logout_view, name="logout"),
  path('changepassword', password,name='password'),
+ path('forgetpassword', forget_view, name='forget')
 ]
