@@ -68,6 +68,7 @@ class PasswordForm(forms.Form):
             raise forms.ValidationError('Parollar eyni deyil!')
         return new_password2      
 
+    
     # def clean_password(self):
     #      password = self.cleaned_data.get('password')
     #      if password and User

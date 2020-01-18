@@ -1,32 +1,38 @@
+{% load static %}
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:600|Roboto+Condensed:300' rel='stylesheet' type='text/css'>
 
 <hr>
-<footer>
+{% comment %} <footer>
   <div class="social">
-    <h3>Bizi izləyin</h3>
     <div class="social-list">
         <a href="https://www.facebook.com/2010ff">
       <button class="social-btn" href="https://www.facebook.com/2010ff">
         <i class="fa fa-facebook-square fa-4x"></i>
-        <p>Facebook</p>
       </button>
       </a>
       <a href="https://www.youtube.com/user/AGCEBEDIUSAQLARI">
       <button class="social-btn" >
         <i class="fa fa-youtube-square fa-4x"></i>
-        <p>Youtube</p>
+
       </button>
       </a>
       <a href="https://www.instagram.com/faridjafarzada/">
       <button class="social-btn" >
         <i class="fa fa-instagram fa-4x"></i>
-        <p>Instagram</p>
+
       </button>
+      <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       </a>
     </div>
+  </div> {% endcomment %}
+  <div align='center'>
+  <a href="https://www.facebook.com/2010ff"><img style='height:50px ;' src='{% static "img/facebook.png" %}' ></a>
+  <a href="https://www.youtube.com/user/AGCEBEDIUSAQLARI"><img style='height:50px; padding-left:5px' src='{% static "img/youtube.png" %}' ></a>
+  <a href="https://www.instagram.com/faridjafarzada/"><img style='height:50px; padding-left:5px' src='{% static "img/instagram.png" %}' ></a>
+
+
   </div>
-  
 </footer>
 
 
