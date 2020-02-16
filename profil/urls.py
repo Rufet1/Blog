@@ -8,4 +8,5 @@ urlpatterns = [
     path('profileimage', add_image, name="profilimage"),
     path('profile', profil_view,name='profil'),
     path('index', profiles, name='profiles'),
+    path('update', update_profile, name='updateprofile'),
 ]

@@ -35,6 +35,22 @@ class RegisterForm(forms.ModelForm):
             'email',
         ]
         
+class UpdateProfilForm(forms.ModelForm):
+    username = forms.CharField(max_length=100, label='İstifadəçi adı')
+    name = forms.CharField(max_length=100, label='Ad' )
+    surname = forms.CharField(max_length=100,label='Soyad')
+    email = forms.EmailField()
+
+
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'name',
+            'surname',
+            'email',
+        ]
+        
 
 
     def clean_password2(self):

@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,Http404
 from .models import UserProfil
 from .forms import ProfilForm
 from django.contrib.auth.models import User
+from accounts.forms import UpdateProfilForm
 # Create your views here.
 
 def add_image(request):
@@ -32,3 +33,9 @@ def profiles(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+def update_profile(request):
+    form = UpdateProfilForm(request.POST or None ,request.FILES or None, instance=request.user)
+    if form.is_valid():
+        form.save()
+    return render(request,'profil/updateprofile.html', {'form':form})
