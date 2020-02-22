@@ -2,6 +2,12 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from profil.models import UserProfil
+from datetime import datetime
+import datetime as vaxt
+class DateInput(forms.DateInput):
+    input_type = 'date'
+    
+
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=100, label='İstifadəçi adı')
     password = forms.CharField(max_length=100, widget=forms.PasswordInput,label='Parol')
@@ -22,7 +28,9 @@ class RegisterForm(forms.ModelForm):
     password1 = forms.CharField(max_length=100, widget=forms.PasswordInput,label='Parol')
     password2 = forms.CharField(max_length=100, widget=forms.PasswordInput, label='Parol (təkrar)')
     email = forms.EmailField()
+    date = forms.DateField(widget=DateInput())
 
+   
 
     class Meta:
         model = User
@@ -35,6 +43,17 @@ class RegisterForm(forms.ModelForm):
             'email',
         ]
         
+    def clean_date(self):
+        date = self.cleaned_data.get('date')
+        now = datetime.now()
+        year = now.strftime("%Y:%m:%d")
+        obj1 = vaxt.date(int(year[:4]),int(year[5:7]),int(year[8:]))
+        
+        if date and date > obj1:
+            raise forms.ValidationError("Tarixi duzgun qeyd edin!")
+        return date
+
+
 class UpdateProfilForm(forms.ModelForm):
     username = forms.CharField(max_length=100, label='İstifadəçi adı')
     name = forms.CharField(max_length=100, label='Ad' )

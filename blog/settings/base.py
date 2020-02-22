@@ -145,3 +145,5 @@ EMAIL_HOST_USER = 'rufet.quliyev@hushmail.com'
 EMAIL_HOST_PASSWORD = 'reklamlar'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+DATE_FORMAT = '%m-%d-%Y'

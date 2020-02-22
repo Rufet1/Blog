@@ -3,6 +3,8 @@ from .forms import LoginForm, RegisterForm,PasswordForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from profil.models import UserProfil
+from .models import Born
+import datetime
 # from .models import UserProfile
 # Create your views here.
 def login_view(request):
@@ -33,9 +35,25 @@ def register_view(request):
         login(request, new_user)
         profilimage = UserProfil(user=user , image='default.jpg')
         profilimage.save()
-        
+        born = form.cleaned_data.get('date')
+        print('------------------------')
+        print(born)
+        user = request.user
+        new_born_date = Born(user=user,date = born)
+        new_born_date.save()        
         return redirect ('home')
     return render(request, 'accounts/register.html',{'form':form , 'title':'Qeydiyyatdan kec','basliq':'Qeydiyyat'})
+
+# def born_date_register(request):
+#     form = RegisterForm(request.POST or None, request.FILES or None)
+#     if form.is_valid():
+#         born = form.cleaned_data.get('date').replace("/","-")
+#         new_born = str(born[6:]+'-'+born[:2]+"-"+born[3:5])
+#         print('------------------------')
+#         print(new_born)
+#         user = request.user
+#         new_born_date = Born(user=user,date = new_born)
+#         new_born_date.save()
 
 def logout_view(request):
     if not request.user.is_authenticated:
