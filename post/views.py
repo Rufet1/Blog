@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.contrib.auth.models import User
 # Create your views here.
 
 def post_create(request):
@@ -70,6 +71,7 @@ def post_update(request, slug):
 def post_index(request):
     post_list = Post.objects.all()
     query = request.GET.get('q')
+    # print(query)
     if query:
         post_list = post_list.filter(
             Q(title__icontains=query)|
@@ -136,10 +138,31 @@ def category_delete(request,categoryid):
 def about_view(request):
     return render (request, 'aboutus.html')
 
+def change_visiblity(request,postid):
+    post = Post.objects.get(id=postid)
+    if post.user == request.user:
+        if post.visibility == True:
+            post.visibility = False
+            post.save()
+        else:
+            post.visibility = True
+            post.save()
+    return redirect ('profile:profil')
+
+def arxiv_postlar(request):
+    user = request.user
+    posts = user.post_set.all().filter(visibility=False)
+    print(posts)
+    return render (request,'post/notvisibility.html',{"posts":posts})
+
+
+
+
+
+
 # def comment_update(request,commentid):
 #     comment = get_object_or_404(Comment,id=commentid)
 #     form = CommentForm(request.POST or None, request.FILES or None, instance=comment)
 #     if form.is_valid():
 #         form.save()
 #         return render(request, 'post/comment.html',{'form':form})
-    

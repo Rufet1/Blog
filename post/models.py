@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Post(models.Model):
     user = models.ForeignKey('auth.User', verbose_name = 'Yazar', on_delete=models.CASCADE,)
-    category = models.ForeignKey('post.Category',on_delete=models.CASCADE)
+    category = models.ForeignKey('post.Category',on_delete=models.SET_NULL, null=True, blank=True)
+    visibility = models.BooleanField(default=True)
     title = models.CharField(max_length=120)
     content = models.TextField(default="bos")
     publishing_date = models.DateTimeField(auto_now_add=True)
@@ -25,6 +26,9 @@ class Post(models.Model):
         return reverse("post:update", kwargs={"slug": self.slug})
     def get_delete_url(self):
         return reverse("post:delete", kwargs={"slug": self.slug})
+    def get_visibility_url(self):
+        return reverse('post:visibility', kwargs={"postid":self.id})
+        
     def get_unique_slug(self):
         slug = slugify(self.title.replace('ı','i'))
         unique_slug = slug

@@ -20,6 +20,9 @@
                                 <a href="{{post.get_update_url}}" class="btn btn-default" role="button">Guncelle</a>
                                 <a href="{{post.get_delete_url}}" class="btn btn-danger" role="button">Sil</a>
                             {% endif %}
+                            {% if post.user.id == user.id %}
+                                <a href="{{post.get_visibility_url}}" class="btn btn-previous" role="button">Arxivle</a>
+                            {% endif %}
                             </p>
                         </div>
                     </div>
@@ -47,9 +50,9 @@
             </div>
         </div>
     </div>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> {% endcomment %}
 
 
 {% endblock %}

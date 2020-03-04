@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% comment %} post/{{ post.id }} {% endcomment %}
+    {% comment %} {% url 'detail' id=post.id %} {% endcomment %}
+    <div class='container'>
+        {% for post in posts %}
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="thumbnail">
+                        <div class="caption">
+                        {% if post.image %}
+                                <img src='{{ post.image.url }}' class='img-responsive'>
+                        {% endif %}
+                            <h3>{{ post.title}}<small> {{post.publishing_date}}</small></h3>
+                            <h4> Yazar : {{ post.user.get_full_name }}</h4>
+                            <p>{{ post.content|linebreaks|truncatechars:60 }}</p>
+                            <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">Incele</a>
+                             {% if request.user.is_superuser %}
+                                <a href="{{post.get_update_url}}" class="btn btn-default" role="button">Guncelle</a>
+                                <a href="{{post.get_delete_url}}" class="btn btn-danger" role="button">Sil</a>
+                            {% endif %}
+                            {% if post.user.id == user.id %}
+                                <a href="{{post.get_visibility_url}}" class="btn btn-previous" role="button">Arxivdən Çıxar</a>
+                            {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        {% endfor %}
+    
+{% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> {% endcomment %}
+
+
+{% endblock %}

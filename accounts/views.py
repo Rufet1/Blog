@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from profil.models import UserProfil
 from .models import Born
+from django.db.models import Q
 import datetime
 # from .models import UserProfile
 # Create your views here.
@@ -73,6 +74,9 @@ def password(request):
             user.save()
             return redirect('accounts:login')
     return render(request,'accounts/password.html',{'form':form})
+
+
+
 
 
 
