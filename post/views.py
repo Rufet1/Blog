@@ -69,7 +69,7 @@ def post_update(request, slug):
     
 
 def post_index(request):
-    post_list = Post.objects.all()
+    post_list = Post.objects.all().filter(visibility=True)
     query = request.GET.get('q')
     # print(query)
     if query:
