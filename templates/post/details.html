@@ -19,7 +19,7 @@
                     <h3>{{ post.title}}<small> {{post.publishing_date}}</small></h3>
                     <h4> Yazar : {{ post.user.get_full_name }}</h4>
                     {{post.view}}
-                    <p>{{ post.content|linebreaks|truncatechars:60 }}</p>
+                    <p>{{ post.content|linebreaks}}</p>
                     <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">Incele</a>
                         {% if request.user.is_superuser %}
                             <a href="{{post.get_update_url}}" class="btn btn-default" role="button">Guncelle</a>
@@ -52,5 +52,4 @@
         </div>
     </div>
 </div>
-    {% include "footer.html" %}
 {% endblock %}

@@ -1,109 +1,20 @@
 {% load static %}
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:600|Roboto+Condensed:300' rel='stylesheet' type='text/css'>
-
-<hr>
-{% comment %} <footer>
-  <div class="social">
-    <div class="social-list">
-        <a href="https://www.facebook.com/2010ff">
-      <button class="social-btn" href="https://www.facebook.com/2010ff">
-        <i class="fa fa-facebook-square fa-4x"></i>
-      </button>
-      </a>
-      <a href="https://www.youtube.com/user/AGCEBEDIUSAQLARI">
-      <button class="social-btn" >
-        <i class="fa fa-youtube-square fa-4x"></i>
-
-      </button>
-      </a>
-      <a href="https://www.instagram.com/faridjafarzada/">
-      <button class="social-btn" >
-        <i class="fa fa-instagram fa-4x"></i>
-
-      </button>
-      <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-      </a>
-    </div>
-  </div> {% endcomment %}
-  <div align='center'>
-  <a href="https://www.facebook.com/2010ff"><img style='height:50px ;' src='{% static "img/facebook.png" %}' ></a>
-  <a href="https://www.youtube.com/user/AGCEBEDIUSAQLARI"><img style='height:50px; padding-left:5px' src='{% static "img/youtube.png" %}' ></a>
-  <a href="https://www.instagram.com/faridjafarzada/"><img style='height:50px; padding-left:5px' src='{% static "img/instagram.png" %}' ></a>
-
-
-  </div>
-</footer>
-
-
 <style>
-* {
-  margin: 0;
-  padding: 0;
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #212121;
+   color: white;
+   text-align: center;
 }
-
-footer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.contact {
-  width: 300px;
-  margin: auto;
-}
-
-.social {
-  max-width: 300px;
-  margin: auto;
-}
-
-.social-list {
-  max-width: 300px;
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.social h3, .contact h3 {
-  font-family: 'Open Sans', Sans Serif;
-  box-sizing: border-box;
-  width: 100%;
-  text-align: center;
-  background-color: #34495e;
-  background-image: url(http://www.transparenttextures.com/patterns/escheresque.png);
-  border-radius: 5px;
-  padding: 10px;
-  margin: 0 0 5px 0;
-  color: #fff;
-  
-}
-
-.social-btn {
-  text-align: center;
-  border: none;
-  color: #bdc3c7;
-  width: 60px;
-  height: 80px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-sizing: border-box;
-  transition: all .3s ease-out;
-  padding: 0 3px 5px 3px;
-  margin: 5px 5px 5px 5px;
-  font-family: 'Roboto Condensed', Sans Serif;
-}
-
-.social-btn:hover {
-  color: #34495e;
-  -webkit-filter: drop-shadow(0 0 2px #34495e);
-
-}
-
-.social-btn:focus {
-  outline: 0;
-}
-
-
-
 </style>
+
+<div class="footer">
+  <a href="https://www.facebook.com/2010ff"><img style='height:30px ;' src='{% static "img/facebook.png" %}' ></a>
+  <a href="https://www.youtube.com/user/AGCEBEDIUSAQLARI"><img style='height:30px; padding-left:5px' src='{% static "img/youtube.png" %}' ></a>
+  <a href="https://www.instagram.com/faridjafarzada/"><img style='height:30px; padding-left:5px' src='{% static "img/instagram.png" %}' ></a>
+  <br>
+  <small>Copyright &copy; jafarzada.com</small><br>
+</div>

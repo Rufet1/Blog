@@ -34,7 +34,7 @@ def register_view(request):
         user.save()
         new_user = authenticate(username=user.username , password=password)
         login(request, new_user)
-        profilimage = UserProfil(user=user , image='default.jpg')
+        profilimage = UserProfil(user=user , image='default.png')
         profilimage.save()
         born = form.cleaned_data.get('date')
         print('------------------------')
