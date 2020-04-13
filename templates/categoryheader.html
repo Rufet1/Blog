@@ -1,0 +1,29 @@
+{% if showed %}
+<nav style='position:static;background-color:#090909'  class="navbar navbar-inverse navbar-fixed-top  " role="banner">
+
+    <ul style='text-align:center' class="nav nav-pills">
+        <div class='container'>
+            <div class='row'>
+            {% for cat in showed %}
+                <li class='oo col-md-3 col-sm-3'><a href='{{cat.get_absolute_url}}'>{{cat.title}}</a></li>
+            {% endfor %}
+                <li class='col-md-3 col-sm-3' role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                        aria-expanded="false">
+                        Digər <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                    {% for hid in hidden %}
+                        <a href='{{hid.get_absolute_url}}'>
+                            <li style='text-align:center'>{{hid.title}}</li>
+                        </a>
+                    {% endfor %}
+                    </ul>
+                </li>
+            </div>
+
+
+    </ul>
+    <div>
+</nav>
+{% endif %}

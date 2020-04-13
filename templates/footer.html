@@ -4,17 +4,41 @@
    position: fixed;
    left: 0;
    bottom: 0;
+   min-height:50px;
    width: 100%;
-   background-color: #212121;
+   background-color: #090909;
    color: white;
    text-align: center;
+}
+.footer a:link {
+  color: white;
+}
+
+/* visited link */
+.footer  a:visited {
+  color: white;
+}
+
+/* mouse over link */
+.footer a:hover {
+  color: #000000;
+}
+
+/* selected link */
+.footer a:active {
+  color: white;
+}
+.footer a {
+  padding:15px;
 }
 </style>
 
 <div class="footer">
-  <a href="https://www.facebook.com/2010ff"><img style='height:30px ;' src='{% static "img/facebook.png" %}' ></a>
-  <a href="https://www.youtube.com/user/AGCEBEDIUSAQLARI"><img style='height:30px; padding-left:5px' src='{% static "img/youtube.png" %}' ></a>
-  <a href="https://www.instagram.com/faridjafarzada/"><img style='height:30px; padding-left:5px' src='{% static "img/instagram.png" %}' ></a>
+<br>
+  <a href="https://www.facebook.com/2010ff">Facebook</a>
+  <a href="https://www.youtube.com/user/AGCEBEDIUSAQLARI">YouTube</a>
+  <a href="https://www.instagram.com/faridjafarzada/">İnstagram</a>
+  <a href="http://www.jafarzada.com">Jafarzada.com</a>
   <br>
-  <small>Copyright &copy; jafarzada.com</small><br>
+  {% comment %} <small>Copyright &copy; jafarzada.com</small><br> {% endcomment %}
 </div>

@@ -102,7 +102,9 @@ def post_delete(request, slug):
     return redirect('post:index')
 
 def home_view(request):
-    return render(request, 'home.html', {'title':'Ana səhifə'})
+    show_cat = Category.objects.all().filter(home_show=True)
+    hide_cat = Category.objects.all().filter(home_show=False)
+    return render(request, 'home.html', {'showed':show_cat,'hidden':hide_cat})
 
 def about_view(request):
     return render(request, 'about.html')
@@ -117,6 +119,11 @@ def category_list(request):
     all_categories = Category.objects.all
     return render (request,'post/category.html',{'categories':all_categories})
 
+# def category_basehtml(request):
+#     show_cat = Category.objects.all().filter(home_show=True)
+#     hide_cat = Category.objects.all().filter(home_show=False)
+#     print('------------------------ ------------------------')
+#     return render(request,'header.html',{'showed':show_cat})
 
 def category(request,categoryid):
     category = get_object_or_404(Category, id=categoryid)
@@ -135,8 +142,6 @@ def category_delete(request,categoryid):
     category.delete()
     return redirect ('post:categorylist')
 
-def about_view(request):
-    return render (request, 'aboutus.html')
 
 def change_visiblity(request,postid):
     post = Post.objects.get(id=postid)

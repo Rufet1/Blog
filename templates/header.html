@@ -1,6 +1,6 @@
 <!-- Navbar Start -->
-<nav class="navbar navbar-inverse navbar-fixed-top " role="banner">
-    <div class="container" style="padding-bottom:1px" >
+<div style='padding-top:10px;background-color:#090909' class="navbar navbar-inverse navbar-fixed-top " role="banner">
+    <div class="container">
 
         <div class="navbar-header">
 
@@ -54,9 +54,9 @@
                 {% endif %}
                 {% if request.user.is_authenticated %}
                 <li style='padding-top:5px;'>
-                <div class="inset" >
-                  <img src="{{user.userprofil.image.url}}">
-                </div>
+                    <div class="inset">
+                        <img src="{{user.userprofil.image.url}}">
+                    </div>
                 </li>
                 {% endif %}
             </ul>
@@ -64,28 +64,60 @@
         </nav>
 
     </div>
-</nav>
-<style>
-.inset {
-  width: 46px;
-  height: 42px;
-  border-radius: 50%;
-  box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,0.6), 
-    0 1px 1px rgba(0,0,0,0.1);
-  background-color: transparent !important;
-  z-index: 999;
-}
-{% comment %} * {
-    font-family: 'Muli', sans-serif;
-} {% endcomment %}
+</div>
 
-.inset img {
-  border-radius: inherit;
-  width: inherit;
-  height: inherit;
-  display: block;
-  position: relative;
-  z-index: 998;
-}
+<style>
+    .inset {
+        width: 46px;
+        height: 42px;
+        border-radius: 50%;
+        box-shadow:
+            inset 0 0 0 2px rgba(255, 255, 255, 0.6),
+            0 1px 1px rgba(0, 0, 0, 0.1);
+        background-color: transparent !important;
+        z-index: 999;
+    }
+
+        {
+        % comment %
+    }
+
+    * {
+        font-family: 'Muli', sans-serif;
+    }
+
+        {
+        % endcomment %
+    }
+
+    .inset img {
+        border-radius: inherit;
+        width: inherit;
+        height: inherit;
+        display: block;
+        position: relative;
+        z-index: 998;
+    }
+
+    .oo a:link {
+    color: white;
+    }
+
+    /* visited link */
+    oo  a:visited {
+    color: white;
+    }
+
+    /* mouse over link */
+    oo a:hover {
+    color: #000000;
+    }
+
+    /* selected link */
+    oo a:active {
+    color: white;
+    }
+    li a {
+    padding:15px;
+    }
 </style>
