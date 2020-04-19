@@ -74,3 +74,8 @@ class Category(models.Model):
     def get_delete_url(self):
         return reverse ('post:categorydelete', kwargs={'categoryid':self.id})
     
+
+class HomeImage(models.Model):
+    content = models.TextField(default='...')
+    image = models.ImageField(upload_to='homeimage')
+    number = models.IntegerField(default=0)

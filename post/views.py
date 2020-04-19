@@ -1,11 +1,13 @@
 from django.shortcuts import render,HttpResponse, get_object_or_404,HttpResponseRedirect,redirect,Http404
-from.models import Post, Comment,Category
-from .forms import PostForm, CommentForm,CategoryForm
+from.models import Post, Comment,Category,HomeImage
+from .forms import PostForm, CommentForm,CategoryForm,HomeForm
 from django.contrib import messages
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.contrib.auth.models import User
+
+
 # Create your views here.
 
 def post_create(request):
@@ -104,7 +106,13 @@ def post_delete(request, slug):
 def home_view(request):
     show_cat = Category.objects.all().filter(home_show=True)
     hide_cat = Category.objects.all().filter(home_show=False)
-    return render(request, 'home.html', {'showed':show_cat,'hidden':hide_cat})
+    images = HomeImage.objects.all()
+    for i in images:
+        if i == HomeImage.objects.first():
+            i.number = 1
+            i.save()
+    context = {'showed':show_cat,'hidden':hide_cat,'images':images,'counter':0}
+    return render(request, 'home.html', context)
 
 def about_view(request):
     return render(request, 'about.html')
@@ -159,6 +167,15 @@ def arxiv_postlar(request):
     posts = user.post_set.all().filter(visibility=False)
     print(posts)
     return render (request,'post/notvisibility.html',{"posts":posts})
+
+def home_image_create(request):
+    if not request.user.is_superuser:
+        return Http404
+    form = HomeForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+    return render(request,'post/form.html',{'form':form})
+
 
 
 

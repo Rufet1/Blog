@@ -20,7 +20,7 @@
                     <h4> Yazar : {{ post.user.get_full_name }}</h4>
                     {{post.view}}
                     <p>{{ post.content|linebreaks}}</p>
-                    <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">Incele</a>
+                    {% comment %} <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">Incele</a> {% endcomment %}
                         {% if request.user.is_superuser %}
                             <a href="{{post.get_update_url}}" class="btn btn-default" role="button">Guncelle</a>
                             <a href="{{post.get_delete_url}}" class="btn btn-danger" role="button">Sil</a> 

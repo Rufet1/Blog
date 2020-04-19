@@ -10,6 +10,7 @@ urlpatterns = [
  path('not-visibility-posts',arxiv_postlar,name='arxivpostlar'),
  path('create', post_create, name="create"),
  path('categories/',category_list, name = 'categorylist'),
+ path('homeimage/',home_image_create, name = 'homeimage'),
  path('category-create/',category_create, name = 'categorycreate'),
  url(r'^(?P<postid>[\w-]+)/visibility/$', change_visiblity, name="visibility"),
  url(r'^(?P<categoryid>[\w-]+)/category/$', category, name="category"),

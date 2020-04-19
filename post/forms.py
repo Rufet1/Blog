@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment,Category
+from .models import Post, Comment,Category,HomeImage
 from captcha.fields import ReCaptchaField
 
 
@@ -27,4 +27,12 @@ class CategoryForm(forms.ModelForm):
         fields = [
             'title',
             'home_show'
+        ]
+
+class HomeForm(forms.ModelForm):
+    class Meta:
+        model = HomeImage
+        fields = [
+            'content',
+            'image'
         ]
