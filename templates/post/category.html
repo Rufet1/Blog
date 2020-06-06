@@ -2,7 +2,7 @@
 
 
 {% block body %}
-
+<div class='container'>
 {% if request.user.is_superuser %}
     <a href='{% url "post:categorycreate" %}' ><button class='btn btn-success'> Kateqoriya Əlavə Et + </button></a><br><hr>
 {% endif %}
@@ -17,4 +17,5 @@
     
 {% endfor %}
 </ul>
+</div>
 {% endblock %}

@@ -141,7 +141,7 @@ NOCAPTCHA = True
 
 EMAIL_HOST = 'smtp.hushmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'rufet.quliyev@hushmail.com'
+EMAIL_HOST_USER = 'jafarzada.com@hushmail.com'
 EMAIL_HOST_PASSWORD = 'reklamlar'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False

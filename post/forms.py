@@ -33,6 +33,7 @@ class HomeForm(forms.ModelForm):
     class Meta:
         model = HomeImage
         fields = [
+            'image',
             'content',
-            'image'
+            
         ]

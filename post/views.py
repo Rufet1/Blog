@@ -174,7 +174,7 @@ def home_image_create(request):
     form = HomeForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
-    return render(request,'post/form.html',{'form':form})
+    return render(request,'post/form.html',{'form':form,'ad':'Şəkil əlavə et'})
 
 
 
