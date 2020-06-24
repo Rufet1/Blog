@@ -16,7 +16,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-        
+
+    def get_like_url(self):
+        return reverse("post:like", kwargs={"id": self.id})
+
     def get_absolute_url(self):
         return reverse("post:detail", kwargs={"slug": self.slug})
         # return '/post/{}'.format(self.id)
@@ -79,3 +82,12 @@ class HomeImage(models.Model):
     content = models.TextField(default='...')
     image = models.ImageField(upload_to='homeimage')
     number = models.IntegerField(default=0)
+
+
+class PostLike(models.Model):
+    user = models.ManyToManyField(User)
+    post = models.OneToOneField(Post,on_delete=models.CASCADE,)
+
+
+    
+    

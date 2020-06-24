@@ -55,7 +55,7 @@
                     </ul>
                 </li>
                 {% endif %}
-                {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated and request.user.userprofil %}
                 <li style='padding-top:5px;'>
                     <div class="inset">
                         <img src="{{user.userprofil.image.url}}">

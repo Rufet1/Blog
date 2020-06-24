@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block body %}
     {% comment %} post/{{ post.id }} {% endcomment %}
     {% comment %} {% url 'detail' id=post.id %} {% endcomment %}
@@ -15,14 +15,20 @@
                             <h3>{{ post.title}}<small> {{post.publishing_date}}</small></h3>
                             <h4> Yazar : {{ post.user.get_full_name }}</h4>
                             <p>{{ post.content|linebreaks|truncatechars:60 }}</p>
-                            <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">Incele</a>
+                            <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">İncele</a>
                              {% if request.user.is_superuser %}
-                                <a href="{{post.get_update_url}}" class="btn btn-default" role="button">Guncelle</a>
+                                <a href="{{post.get_update_url}}" class="btn btn-default" role="button">Güncelle</a>
                                 <a href="{{post.get_delete_url}}" class="btn btn-danger" role="button">Sil</a>
                             {% endif %}
                             {% if post.user.id == user.id %}
                                 <a href="{{post.get_visibility_url}}" class="btn btn-previous" role="button">Arxivle</a>
                             {% endif %}
+                            {% if not request.user in post.postlike.user.all %}
+                            <a {% if not request.user.is_authenticated %}href="{% url 'accounts:login' %}"{% else %} href="{{post.get_like_url}}"{% endif %} class="btn btn-default" role="button"><img style="height:20px" src="{% static 'img/like.png' %}"></a>
+                            {% else %}
+                            <a {% if not request.user.is_authenticated %}href="{% url 'accounts:login' %}"{% else %} href="{{post.get_like_url}}"{% endif %} class="btn btn-default" role="button"><img style="height:20px" src="{% static 'img/unlike.png' %}"></a>
+                            {% endif %}
+                            <small> bəyənmə sayı : {{post.postlike.user.all.count}} </small>
                             </p>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.contrib.auth.models import User
+from .models import PostLike
 
 
 # Create your views here.
@@ -30,6 +31,8 @@ def post_create(request):
         print(post)
         post.user = request.user
         post.save()
+        postlike = PostLike.objects.create(post=post)
+        postlike.save()
         messages.success(request, 'Post yuklediniz!')
         return HttpResponseRedirect(post.get_absolute_url())
 
@@ -176,8 +179,41 @@ def home_image_create(request):
         form.save()
     return render(request,'post/form.html',{'form':form,'ad':'Şəkil əlavə et'})
 
+def likepost(request,id):
+    if not request.user.is_authenticated:
+        return redirect ('accounts:login')
+    post = Post.objects.get(id = id)
+    all_liked_users = []
+    for i in post.postlike.user.all():
+        all_liked_users.append(i.username)
+    print(request.user.username)
+    print(all_liked_users)
+    if PostLike.objects.filter(post=post).exists():
+        postlike = PostLike.objects.get(post = post)
+        if request.user.username in all_liked_users:
+            print('icindedi')
+            postlike.delete()
+            all_liked_users.remove(request.user.username)
+            new_postlike = PostLike.objects.create(post=post)
+            for i in all_liked_users:
+                new_postlike.user.add(User.objects.get(username = i).id)
+                new_postlike.save()
+        else:
+            print('icinde deyil')
+            postlike.delete()
+            all_liked_users.append(request.user.username)
+            new_postlike = PostLike.objects.create(post=post)
+            for i in all_liked_users:
+                new_postlike.user.add(User.objects.get(username = i).id)
+                new_postlike.save()
+    else:
+        postlike = PostLike.objects.create(post=post)
+        postlike.save()
+    like_count = post.postlike.user.all().count()
+    return redirect('post:index')
 
 
+        
 
 
 
