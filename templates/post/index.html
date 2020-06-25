@@ -6,14 +6,15 @@
     <div class='container'>
         {% for post in posts %}
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+                <div class="col-md-10 col-md-offset-1">
                     <div class="thumbnail">
                         <div class="caption">
                         {% if post.image %}
                                 <img src='{{ post.image.url }}' class='img-responsive'>
                         {% endif %}
-                            <h3>{{ post.title}}<small> {{post.publishing_date}}</small></h3>
-                            <h4> Yazar : {{ post.user.get_full_name }}</h4>
+                        <div style='text-align:center'>
+                            <h3>{{ post.title}}<small> | {{post.publishing_date}}</small></h3>
+                            <h4> Müəllif : {{ post.user.get_full_name }}</h4>
                             <p>{{ post.content|linebreaks|truncatechars:60 }}</p>
                             <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">İncele</a>
                              {% if request.user.is_superuser %}
@@ -29,6 +30,7 @@
                             <a {% if not request.user.is_authenticated %}href="{% url 'accounts:login' %}"{% else %} href="{{post.get_like_url}}"{% endif %} class="btn btn-default" role="button"><img style="height:20px" src="{% static 'img/unlike.png' %}"></a>
                             {% endif %}
                             <small> bəyənmə sayı : {{post.postlike.user.all.count}} </small>
+                        </div>
                             </p>
                         </div>
                     </div>

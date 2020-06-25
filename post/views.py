@@ -213,9 +213,6 @@ def likepost(request,id):
     return redirect('post:index')
 
 
-        
-
-
 
 
 # def comment_update(request,commentid):

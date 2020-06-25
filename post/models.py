@@ -19,7 +19,7 @@ class Post(models.Model):
 
     def get_like_url(self):
         return reverse("post:like", kwargs={"id": self.id})
-
+    
     def get_absolute_url(self):
         return reverse("post:detail", kwargs={"slug": self.slug})
         # return '/post/{}'.format(self.id)
