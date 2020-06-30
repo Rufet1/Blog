@@ -7,6 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.contrib.auth.models import User
 from .models import PostLike
+from profil.models import UserProfil
 
 
 # Create your views here.
@@ -110,11 +111,15 @@ def home_view(request):
     show_cat = Category.objects.all().filter(home_show=True)
     hide_cat = Category.objects.all().filter(home_show=False)
     images = HomeImage.objects.all()
+    if request.user.is_authenticated:
+        hasprofileimage = UserProfil.objects.filter(user=request.user).exists()
+        context = {'showed':show_cat,'hidden':hide_cat,'images':images,'counter':0,'hasimage':hasprofileimage}
+    else:
+        context = {'showed':show_cat,'hidden':hide_cat,'images':images,'counter':0}
     for i in images:
         if i == HomeImage.objects.first():
             i.number = 1
             i.save()
-    context = {'showed':show_cat,'hidden':hide_cat,'images':images,'counter':0}
     return render(request, 'home.html', context)
 
 def about_view(request):

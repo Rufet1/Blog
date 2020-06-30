@@ -8,18 +8,17 @@ from accounts.forms import UpdateProfilForm
 def add_image(request):
     form = ProfilForm(request.POST or None,request.FILES or None)
     if form.is_valid():
-        deletedimage=UserProfil.objects.get(user=request.user)
-        deletedimage.delete()
-        image = form.save(commit=False)
-        image.user = request.user
-        image.save()
-        # if not request.user.userprofil:
-        #     image = form.save(commit=False)
-        #     image.user = request.user
-        #     image.save()
-        #     return redirect ('home')
-        # else:
-        #     return redirect('home')
+        deletedimage = UserProfil.objects.filter(user=request.user).exists()
+        if deletedimage == True:
+            delimage = UserProfil.objects.get(user=request.user)
+            delimage.delete()
+            image = form.cleaned_data.get('image')
+            newpic = UserProfil(user=request.user,image=image)
+            newpic.save()
+        else:
+            image = form.cleaned_data.get('image')
+            newpic = UserProfil(user=request.user,image=image)
+            newpic.save()
     return render (request, 'profil/form.html', {'form':form, 'basliq':'Profil şəkli'})
 
 def profil_view(request):
