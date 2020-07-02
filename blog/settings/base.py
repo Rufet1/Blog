@@ -146,4 +146,3 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 DATE_FORMAT = '%m-%d-%Y'
-CKEDITOR_BASEPATH = "/staticfiles/ckeditor/ckeditor/"
