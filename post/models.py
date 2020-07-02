@@ -3,13 +3,14 @@ from django.utils import timezone
 from django.urls import reverse
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 # Create your models here.
 class Post(models.Model):
     user = models.ForeignKey('auth.User', verbose_name = 'Yazar', on_delete=models.CASCADE,)
     category = models.ForeignKey('post.Category',on_delete=models.SET_NULL, null=True, blank=True)
     visibility = models.BooleanField(default=True)
     title = models.CharField(max_length=120)
-    content = models.TextField(default="bos")
+    content = RichTextField(null=True,blank=True)
     publishing_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(null=True, blank=True)
     slug = models.SlugField(unique=True,editable=False, max_length=130)
