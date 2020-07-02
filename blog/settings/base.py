@@ -146,3 +146,5 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 DATE_FORMAT = '%m-%d-%Y'
+
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'

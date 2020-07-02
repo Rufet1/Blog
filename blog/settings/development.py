@@ -8,4 +8,4 @@ STATICFILES_DIRS= [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 
-CKEDITOR_BASEPATH = "/staticfiles/ckeditor/ckeditor/"
+CKEDITOR_BASEPATH = "/statlicfiles/ckeditor/ckeditor/"
