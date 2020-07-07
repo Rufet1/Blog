@@ -12,14 +12,17 @@
                         {% if post.image %}
                                 <img src='{{ post.image.url }}' class='img-responsive'>
                         {% endif %}
-                            <h3>{{ post.title}}<small> {{post.publishing_date}}</small></h3>
+                            <div style='text-align:center'>
+                            <h3>{{ post.title}}</h3>
                             <h4> Yazar : {{ post.user.get_full_name }}</h4>
-                            <p>{{ post.content|linebreaks|truncatechars:60 }}<small></p>
-                            <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">Incele</a>
+                            <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">İncələ</a>
                              {% if request.user.is_superuser %}
-                                <a href="{{post.get_update_url}}" class="btn btn-default" role="button">Guncelle</a>
+                                <a href="{{post.get_update_url}}" class="btn btn-default" role="button">Güncəllə</a>
                                 <a href="{{post.get_delete_url}}" class="btn btn-danger" role="button">Sil</a>
                             {% endif %}
+                            <br>
+                            <small> {{post.publishing_date}}</small>
+                            </div>
                             </p>
                         </div>
                     </div>

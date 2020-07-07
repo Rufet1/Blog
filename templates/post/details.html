@@ -17,7 +17,7 @@
                     <img src='{{ post.image.url }}' class=' img-responsive'>
                     {% endif %}
                     <div style="text-align:center">
-                    <h3>{{ post.title}}<small> {{post.publishing_date}}</small></h3>
+                    <h3>{{ post.title}}</h3>
                     <h4> Müəllif : {{ post.user.get_full_name }}</h4>
                     {{post.view}}
                     <p>{{ post.content|safe}}</p>
@@ -28,6 +28,7 @@
                         {% endif %}
                        
                     </p>
+                    <small> {{post.publishing_date}}</small>
                     </div>
                 </div>
             </div>
