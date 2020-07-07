@@ -8,6 +8,8 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from .models import PostLike
 from profil.models import UserProfil
+import requests
+from bs4 import BeautifulSoup
 
 
 # Create your views here.
@@ -217,6 +219,22 @@ def likepost(request,id):
     like_count = post.postlike.user.all().count()
     return redirect('post:index')
 
+def corona_view(request):
+    r = requests.get('https://koronavirusinfo.az/az')
+    soup = BeautifulSoup(r.content,'lxml')
+    umumi_yoluxma = soup.find('div',attrs = {'class':'counter infected'}).select('strong')[0].text
+    gunluk_yoluxma = soup.find_all('div',attrs = {'class':'counter infected'})[1].strong.text
+    olum_hali = soup.find_all('div',attrs = {'class':'counter infected'})[2].strong.text
+    umumi_sagalma = soup.find_all('div',attrs = {'class':'counter healed'})[0].strong.text
+    aktiv_xeste = soup.find_all('div',attrs = {'class':'counter infected'})[3].strong.text
+    
+    return render(request,'corona.html',{
+        'umumi_yoluxma':umumi_yoluxma,
+        'gunluk_yoluxma': gunluk_yoluxma,
+        'olum':olum_hali,
+        'umumi_sagalma':umumi_sagalma,
+        'aktiv_xeste':aktiv_xeste
+        })
 
 
 

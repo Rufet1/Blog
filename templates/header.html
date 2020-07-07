@@ -35,6 +35,8 @@
                 <li><a href="{% url 'home' %}">Ana səhifə</a></li>
                 <li><a href="{% url 'post:categorylist' %}">Kateqoriyalar</a></li>
                 <li><a href="{% url 'post:index' %}">Blog</a></li>
+                <li><a href="{% url 'corona' %}">Koronavirus</a></li>
+
                 {% if not request.user.is_authenticated %}
                 <li><a href="{% url 'accounts:login' %}">Giriş</a></li>
                 <li><a href="{% url 'accounts:register' %}">Qeydiyyat</a></li>

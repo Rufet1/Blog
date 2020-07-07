@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div style='text-align:center'>
+    <img style='height:100px' src="{% static 'img/flag.jpg' %}">
+    <h4>Azərbaycanda Son Vəziyyət</h4>
+    {% if gunluk_yoluxma == '0' %}
+        <h3>Bugünlük yoluxma sayı açıqlanmayıb</h3>
+    {% else %}
+        <h3>Gunluk yoluxma: {{gunluk_yoluxma}}</h3>
+    {% endif %}
+    <h3>Ümumi Yoluxma: {{umumi_yoluxma}}</h3>
+    <h3>Aktiv Xəstə Sayı: {{aktiv_xeste}}</h3>
+    <h3>Ümumi Sağalma: {{umumi_sagalma}}</h3>
+    <h3>Ölüm sayı: {{olum}}</h3>
+
+<div>
+{% endblock %}

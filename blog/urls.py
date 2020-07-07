@@ -23,6 +23,7 @@ from profil.views import contact
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/', include('post.urls')),
+    path('coronavirus/',corona_view, name = 'corona'),
     path('account/', include('accounts.urls')),
     path('profil/', include('profil.urls')),
     path('email/', include('sendemail.urls')),
