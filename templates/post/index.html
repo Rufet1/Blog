@@ -13,9 +13,8 @@
                                 <img src='{{ post.image.url }}' class='img-responsive'>
                         {% endif %}
                         <div style='text-align:center'>
-                            <h3>{{ post.title}}<small> | {{post.publishing_date}}</small></h3>
+                            <h3>{{ post.title}}<small></small></h3>
                             <h4> Müəllif : {{ post.user.get_full_name }}</h4>
-                            <p>{{ post.content|truncatechars:60|safe }}</p>
                             <p><a href="{{post.get_absolute_url}}" class="btn btn-primary" role="button">İncele</a>
                              {% if request.user.is_superuser %}
                                 <a href="{{post.get_update_url}}" class="btn btn-default" role="button">Güncelle</a>
@@ -29,7 +28,8 @@
                             {% else %}
                             <a {% if not request.user.is_authenticated %}href="{% url 'accounts:login' %}"{% else %} href="{{post.get_like_url}}"{% endif %} class="btn btn-default" role="button"><img style="height:20px" src="{% static 'img/unlike.png' %}"></a>
                             {% endif %}
-                            <small> bəyənmə sayı : {{post.postlike.user.all.count}} </small>
+                            <small> bəyənmə sayı : {{post.postlike.user.all.count}} </small> <br>
+                            <small> {{post.publishing_date}}</small>
                         </div>
                             </p>
                         </div>

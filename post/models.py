@@ -22,19 +22,19 @@ class Post(models.Model):
         return reverse("post:like", kwargs={"id": self.id})
     
     def get_absolute_url(self):
-        return reverse("post:detail", kwargs={"slug": self.slug})
+        return reverse("post:detail", kwargs={"id": self.id})
         # return '/post/{}'.format(self.id)
     def get_create_url(self):
         return reverse("post:create",)
     def get_update_url(self):
-        return reverse("post:update", kwargs={"slug": self.slug})
+        return reverse("post:update", kwargs={"id": self.id})
     def get_delete_url(self):
-        return reverse("post:delete", kwargs={"slug": self.slug})
+        return reverse("post:delete", kwargs={"id": self.id})
     def get_visibility_url(self):
         return reverse('post:visibility', kwargs={"postid":self.id})
         
     def get_unique_slug(self):
-        slug = slugify(self.title.replace('ı','i'))
+        slug = slugify(self.title.replace('ı','i').replace('ə','e').replace('ü','u').replace('ö','o').replace('ğ','g').replace('ç','c').replace('ş','s'))
         unique_slug = slug
         counter = 1
         while Post.objects.filter(slug=unique_slug).exists():

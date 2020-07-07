@@ -39,8 +39,8 @@ def post_create(request):
 
     return render(request,'post/form.html', {'form':form})
 
-def post_detail(request, slug):
-    post = get_object_or_404(Post, slug=slug)
+def post_detail(request, id):
+    post = get_object_or_404(Post, id=id)
     form = CommentForm(request.POST or None)
     if form.is_valid():
         comment = form.save(commit=False)
@@ -56,11 +56,11 @@ def post_detail(request, slug):
 
     return render(request, 'post/details.html', context)
 
-def post_update(request, slug):
+def post_update(request, id):
     if not request.user.is_authenticated:
         return Http404
 
-    post = get_object_or_404(Post, slug=slug)
+    post = get_object_or_404(Post, id=id)
     form = PostForm(request.POST or None,request.FILES or None, instance=post)
     if form.is_valid():
         form.save()
@@ -99,11 +99,11 @@ def post_index(request):
         posts = paginator.page(paginator.num_pages)
     return render(request, 'post/index.html', {'posts':posts})
 
-def post_delete(request, slug):
+def post_delete(request, id):
     if not request.user.is_authenticated:
         return Http404
 
-    post = get_object_or_404(Post, slug=slug)
+    post = get_object_or_404(Post, id=id)
     post.delete()
     return redirect('post:index')
 
