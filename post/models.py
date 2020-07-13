@@ -89,6 +89,10 @@ class PostLike(models.Model):
     user = models.ManyToManyField(User)
     post = models.OneToOneField(Post,on_delete=models.CASCADE,)
 
+class UploadImage(models.Model):
+    image = models.ImageField(upload_to='image_for_url')
 
+    class Meta:
+        verbose_name_plural = 'Upload Images'
     
     

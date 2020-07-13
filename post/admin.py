@@ -1,5 +1,5 @@
 from django.contrib import admin
-from post.models import Post, Comment, Category,HomeImage,PostLike
+from post.models import Post, Comment, Category,HomeImage,PostLike,UploadImage
 # Register your models here.
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title','publishing_date', 'slug']
@@ -17,5 +17,6 @@ admin.site.register(Comment)
 admin.site.register(Category)
 admin.site.register(HomeImage)
 admin.site.register(PostLike)
+admin.site.register(UploadImage)
 
 
