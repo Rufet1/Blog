@@ -5,7 +5,7 @@ django-cleanup==4.0.0
 django-crispy-forms==1.8.0
 django-js-asset==1.2.2
 django-recaptcha==1.2.1
-Pillow==6.2.1
+Pillow==8.3.2
 pytz==2019.3
 sqlparse==0.3.0
 asgiref==3.2.3
@@ -20,7 +20,7 @@ django-recaptcha==1.2.1
 Jinja2==2.11.2
 jinja2-django-version==1.1.2
 MarkupSafe==1.1.1
-Pillow==6.2.1
+Pillow==8.3.2
 pycodestyle==2.5.0
 pytz==2019.3
 sqlparse==0.3.0
